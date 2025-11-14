@@ -71,7 +71,6 @@
             align-items: start;
         }
         
-        /* Header */
         header {
             padding: 1.5rem 0 1rem;
             text-align: center;
@@ -99,7 +98,6 @@
             text-transform: uppercase;
         }
         
-        /* Main Viewer */
         .viewer-section {
             margin: 1.5rem 0;
         }
@@ -195,7 +193,6 @@
             opacity: 0.3;
         }
         
-        /* Navigation Controls */
         .art-controls {
             display: flex;
             justify-content: space-between;
@@ -267,7 +264,6 @@
             color: var(--text-secondary);
         }
         
-        /* Audio Player */
         .audio-player {
             background: var(--bg-card);
             border: 1px solid var(--border-glow);
@@ -524,7 +520,6 @@
             border-left: 3px solid var(--accent-cyan);
         }
         
-        /* Footer */
         footer {
             text-align: center;
             padding: 1.5rem 0;
@@ -532,9 +527,295 @@
             font-size: 0.75rem;
             color: var(--text-secondary);
             letter-spacing: 0.1em;
+            display: flex;
+            align-items: center;
+            justify-content: center;
         }
         
-        /* Responsive */
+        .footer-content {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.75rem;
+        }
+        
+        /* Admin Vending Machine Icon */
+        .admin-trigger {
+            width: 30px;
+            height: 40px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            flex-shrink: 0;
+            position: relative;
+        }
+        
+        .admin-trigger:hover {
+            transform: scale(1.15);
+        }
+        
+        .admin-trigger:hover::after {
+            content: 'Admin';
+            position: absolute;
+            bottom: 100%;
+            left: 50%;
+            transform: translateX(-50%);
+            background: var(--bg-card);
+            border: 1px solid var(--accent-cyan);
+            padding: 0.25rem 0.5rem;
+            border-radius: 4px;
+            font-size: 0.7rem;
+            white-space: nowrap;
+            margin-bottom: 0.5rem;
+            animation: tooltipFade 0.2s ease-in;
+        }
+        
+        @keyframes tooltipFade {
+            from { opacity: 0; transform: translateX(-50%) translateY(5px); }
+            to { opacity: 1; transform: translateX(-50%) translateY(0); }
+        }
+        
+        .vending-machine-icon {
+            width: 100%;
+            height: 100%;
+            filter: drop-shadow(0 0 20px rgba(0, 240, 255, 0.6));
+            animation: pulse 2s ease-in-out infinite;
+        }
+        
+        @keyframes pulse {
+            0%, 100% { filter: drop-shadow(0 0 20px rgba(0, 240, 255, 0.6)); }
+            50% { filter: drop-shadow(0 0 30px rgba(255, 0, 110, 0.8)); }
+        }
+        
+        /* Admin Modal */
+        .admin-modal {
+            position: fixed;
+            top: 0;
+            right: -600px;
+            width: 600px;
+            height: 100vh;
+            background: var(--bg-card);
+            backdrop-filter: blur(20px);
+            box-shadow: -8px 0 32px rgba(0, 0, 0, 0.5);
+            z-index: 1000;
+            transition: right 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+            overflow-y: auto;
+            border-left: 1px solid var(--accent-cyan);
+        }
+        
+        .admin-modal.active {
+            right: 0;
+        }
+        
+        .admin-modal::-webkit-scrollbar {
+            width: 8px;
+        }
+        
+        .admin-modal::-webkit-scrollbar-track {
+            background: rgba(255, 255, 255, 0.05);
+        }
+        
+        .admin-modal::-webkit-scrollbar-thumb {
+            background: var(--accent-cyan);
+            border-radius: 4px;
+        }
+        
+        .admin-header {
+            padding: 2rem;
+            background: rgba(0, 0, 0, 0.3);
+            border-bottom: 1px solid var(--border-glow);
+            position: sticky;
+            top: 0;
+            z-index: 10;
+            backdrop-filter: blur(10px);
+        }
+        
+        .admin-title {
+            font-size: 1.5rem;
+            font-weight: 700;
+            background: var(--primary-gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 0.5rem;
+        }
+        
+        .admin-subtitle {
+            font-family: 'Share Tech Mono', monospace;
+            font-size: 0.75rem;
+            color: var(--text-secondary);
+            letter-spacing: 0.1em;
+        }
+        
+        .admin-close {
+            position: absolute;
+            top: 2rem;
+            right: 2rem;
+            background: none;
+            border: none;
+            color: var(--accent-pink);
+            font-size: 2rem;
+            cursor: pointer;
+            line-height: 1;
+            transition: all 0.3s ease;
+        }
+        
+        .admin-close:hover {
+            color: #ff3380;
+            transform: rotate(90deg);
+        }
+        
+        .admin-content {
+            padding: 2rem;
+        }
+        
+        .admin-section {
+            margin-bottom: 2rem;
+        }
+        
+        /* Gallery Cards */
+        .gallery-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border-glow);
+            border-radius: 8px;
+            padding: 1.5rem;
+            backdrop-filter: blur(10px);
+            box-shadow: 0 8px 32px rgba(0, 240, 255, 0.1);
+            margin-bottom: 1.5rem;
+        }
+        
+        .gallery-title {
+            font-size: 1.1rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
+            background: var(--secondary-gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+        
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
+            gap: 1rem;
+        }
+        
+        .gallery-item {
+            position: relative;
+            aspect-ratio: 1;
+            border-radius: 8px;
+            overflow: hidden;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            border: 2px solid transparent;
+        }
+        
+        .gallery-item:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 8px 24px rgba(0, 240, 255, 0.3);
+            border-color: var(--accent-cyan);
+        }
+        
+        .gallery-item.active {
+            border-color: var(--accent-pink);
+            box-shadow: 0 0 20px rgba(255, 0, 110, 0.5);
+        }
+        
+        .gallery-item img,
+        .gallery-item video {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        
+        .gallery-item-overlay {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: linear-gradient(to top, rgba(0, 0, 0, 0.8), transparent);
+            padding: 0.5rem;
+            font-size: 0.7rem;
+            color: white;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            white-space: nowrap;
+        }
+        
+        .track-item {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 1rem;
+            background: rgba(0, 0, 0, 0.3);
+            border-radius: 8px;
+            margin-bottom: 0.75rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            border: 2px solid transparent;
+        }
+        
+        .track-item:hover {
+            background: rgba(0, 240, 255, 0.1);
+            border-color: var(--accent-cyan);
+        }
+        
+        .track-item.active {
+            background: rgba(0, 240, 255, 0.2);
+            border-color: var(--accent-pink);
+        }
+        
+        .track-item.linked {
+            border-left: 4px solid var(--accent-purple);
+        }
+        
+        .track-info-item {
+            flex: 1;
+            min-width: 0;
+        }
+        
+        .track-title {
+            font-size: 0.9rem;
+            font-weight: 500;
+            color: var(--text-primary);
+            overflow: hidden;
+            text-overflow: ellipsis;
+            white-space: nowrap;
+        }
+        
+        .track-meta {
+            font-family: 'Share Tech Mono', monospace;
+            font-size: 0.7rem;
+            color: var(--text-secondary);
+            margin-top: 0.25rem;
+        }
+        
+        .link-indicator {
+            display: inline-block;
+            padding: 0.25rem 0.5rem;
+            background: var(--accent-purple);
+            color: white;
+            border-radius: 4px;
+            font-size: 0.65rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+        
+        .empty-state {
+            text-align: center;
+            padding: 3rem 1rem;
+            color: var(--text-secondary);
+        }
+        
+        .empty-state svg {
+            width: 60px;
+            height: 60px;
+            margin-bottom: 1rem;
+            opacity: 0.3;
+        }
+        
         @media (max-width: 1200px) {
             .main-layout {
                 grid-template-columns: 1fr 400px;
@@ -591,6 +872,25 @@
                 width: 100%;
                 justify-content: center;
             }
+            
+            .admin-modal {
+                width: 100%;
+                right: -100%;
+            }
+            
+            .footer-content {
+                flex-direction: column;
+                gap: 0.5rem;
+            }
+            
+            .admin-trigger {
+                width: 25px;
+                height: 35px;
+            }
+            
+            .gallery-grid {
+                grid-template-columns: repeat(auto-fill, minmax(100px, 1fr));
+            }
         }
         
         @media (max-width: 480px) {
@@ -610,6 +910,20 @@
             .upload-card {
                 padding: 1rem;
             }
+            
+            .gallery-grid {
+                grid-template-columns: repeat(auto-fill, minmax(80px, 1fr));
+                gap: 0.75rem;
+            }
+            
+            .footer-content {
+                font-size: 0.65rem;
+            }
+            
+            .admin-trigger {
+                width: 22px;
+                height: 30px;
+            }
         }
     </style>
 </head>
@@ -622,7 +936,6 @@
         
         <main>
             <div class="main-layout">
-                <!-- Left Column: Art Display -->
                 <section class="viewer-section">
                     <div class="art-display">
                         <div class="art-container" id="artContainer">
@@ -653,7 +966,6 @@
                     </div>
                 </section>
                 
-                <!-- Right Column: Controls -->
                 <div class="controls-column">
                     <div class="audio-player">
                         <div class="player-title">🌴 Vaporwave Player</div>
@@ -679,30 +991,32 @@
                                 <input type="range" class="volume-slider" id="volumeSlider" min="0" max="100" value="70">
                             </div>
                         </div>
-                        
-                        <div class="file-list" id="playlist"></div>
                     </div>
                     
-                    <div class="upload-card">
-                        <h3>📁 Upload Artwork</h3>
-                        <div class="file-input-wrapper">
-                            <input type="file" id="artInput" class="file-input" accept="image/gif,video/mp4" multiple>
-                            <label for="artInput" class="file-label">
-                                Click to upload GIFs or MP4s<br>
-                                <small>Supports multiple files</small>
-                            </label>
+                    <div class="gallery-card">
+                        <div class="gallery-title">🎨 Artwork Gallery</div>
+                        <div class="gallery-grid" id="artworkGallery">
+                            <div class="empty-state">
+                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <rect x="3" y="3" width="18" height="18" rx="2" ry="2"/>
+                                    <circle cx="8.5" cy="8.5" r="1.5"/>
+                                    <polyline points="21 15 16 10 5 21"/>
+                                </svg>
+                                <p>No artwork uploaded yet</p>
+                            </div>
                         </div>
-                        <div class="file-list" id="artList"></div>
                     </div>
                     
-                    <div class="upload-card">
-                        <h3>🎵 Upload Audio</h3>
-                        <div class="file-input-wrapper">
-                            <input type="file" id="audioInput" class="file-input" accept="audio/*" multiple>
-                            <label for="audioInput" class="file-label">
-                                Click to upload audio files<br>
-                                <small>MP3, WAV, OGG, etc.</small>
-                            </label>
+                    <div class="gallery-card">
+                        <div class="gallery-title">🎵 Audio Library</div>
+                        <div id="audioLibrary">
+                            <div class="empty-state">
+                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <circle cx="12" cy="12" r="10"/>
+                                    <polygon points="10 8 16 12 10 16 10 8"/>
+                                </svg>
+                                <p>No audio tracks uploaded yet</p>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -710,14 +1024,76 @@
         </main>
         
         <footer>
-            © 2025 Tezos Art Vending Machine · Vaporwave Archive
+            <div class="footer-content">
+                <span>© 2025 Tezos Art Vending Machine · Vaporwave Archive</span>
+                <div class="admin-trigger" id="adminTrigger">
+                    <svg class="vending-machine-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 140" fill="none">
+                        <rect x="10" y="20" width="80" height="100" rx="4" fill="#667eea" stroke="#00f0ff" stroke-width="2"/>
+                        <rect x="20" y="30" width="60" height="45" rx="2" fill="#0a0a0f" stroke="#00f0ff" stroke-width="1.5"/>
+                        <circle cx="50" cy="52.5" r="15" fill="#ff006e" opacity="0.3"/>
+                        <rect x="20" y="85" width="25" height="8" rx="2" fill="#00f0ff" opacity="0.6"/>
+                        <rect x="55" y="85" width="25" height="8" rx="2" fill="#00f0ff" opacity="0.6"/>
+                        <rect x="20" y="100" width="25" height="8" rx="2" fill="#ff006e" opacity="0.6"/>
+                        <rect x="55" y="100" width="25" height="8" rx="2" fill="#ff006e" opacity="0.6"/>
+                        <rect x="30" y="115" width="40" height="3" rx="1.5" fill="#8338ec"/>
+                    </svg>
+                </div>
+            </div>
         </footer>
+    </div>
+    
+    <!-- Admin Modal -->
+    <div class="admin-modal" id="adminModal">
+        <div class="admin-header">
+            <div class="admin-title">⚙️ Admin Panel</div>
+            <div class="admin-subtitle">Upload & Manage Content</div>
+            <button class="admin-close" id="adminClose">×</button>
+        </div>
+        
+        <div class="admin-content">
+            <div class="admin-section">
+                <div class="upload-card">
+                    <h3>📁 Upload Artwork</h3>
+                    <div class="file-input-wrapper">
+                        <input type="file" id="artInput" class="file-input" accept="image/gif,video/mp4" multiple>
+                        <label for="artInput" class="file-label">
+                            Click to upload GIFs or MP4s<br>
+                            <small>Supports multiple files</small>
+                        </label>
+                    </div>
+                    <div class="file-list" id="artList"></div>
+                </div>
+            </div>
+            
+            <div class="admin-section">
+                <div class="upload-card">
+                    <h3>🎵 Upload Audio</h3>
+                    <div class="file-input-wrapper">
+                        <input type="file" id="audioInput" class="file-input" accept="audio/*" multiple>
+                        <label for="audioInput" class="file-label">
+                            Click to upload audio files<br>
+                            <small>MP3, WAV, OGG, etc.</small>
+                        </label>
+                    </div>
+                    <div class="file-list" id="audioList"></div>
+                </div>
+            </div>
+            
+            <div class="admin-section">
+                <div class="upload-card">
+                    <h3>🔗 Link Audio to Artwork</h3>
+                    <p style="font-size: 0.875rem; color: var(--text-secondary); margin-bottom: 1rem;">
+                        Select an artwork from the gallery, then click on an audio track to link them. Linked tracks will auto-play when their artwork is displayed.
+                    </p>
+                    <div id="linkingStatus" style="font-family: 'Share Tech Mono', monospace; font-size: 0.75rem; color: var(--accent-cyan);"></div>
+                </div>
+            </div>
+        </div>
     </div>
     
     <audio id="audioPlayer"></audio>
     
     <script>
-        // State
         let artworks = [];
         let currentArtIndex = 0;
         let audioTracks = [];
@@ -725,8 +1101,9 @@
         let isPlaying = false;
         let isSlideshowActive = false;
         let slideshowInterval = null;
+        let selectedArtworkForLinking = null;
+        let trackLinks = {}; // Maps artwork index to track index
         
-        // Elements
         const artContainer = document.getElementById('artContainer');
         const artCounter = document.getElementById('artCounter');
         const prevBtn = document.getElementById('prevBtn');
@@ -735,6 +1112,7 @@
         const artInput = document.getElementById('artInput');
         const artList = document.getElementById('artList');
         const audioInput = document.getElementById('audioInput');
+        const audioList = document.getElementById('audioList');
         const audioPlayer = document.getElementById('audioPlayer');
         const playBtn = document.getElementById('playBtn');
         const progressBar = document.getElementById('progressBar');
@@ -743,10 +1121,30 @@
         const volumeSlider = document.getElementById('volumeSlider');
         const trackName = document.getElementById('trackName');
         const trackArtist = document.getElementById('trackArtist');
-        const playlist = document.getElementById('playlist');
+        const artworkGallery = document.getElementById('artworkGallery');
+        const audioLibrary = document.getElementById('audioLibrary');
+        const adminTrigger = document.getElementById('adminTrigger');
+        const adminModal = document.getElementById('adminModal');
+        const adminClose = document.getElementById('adminClose');
+        const linkingStatus = document.getElementById('linkingStatus');
         
-        // Initialize volume
         audioPlayer.volume = volumeSlider.value / 100;
+        
+        // Admin Modal Toggle
+        adminTrigger.addEventListener('click', () => {
+            adminModal.classList.add('active');
+        });
+        
+        adminClose.addEventListener('click', () => {
+            adminModal.classList.remove('active');
+        });
+        
+        // Close modal when clicking outside
+        adminModal.addEventListener('click', (e) => {
+            if (e.target === adminModal) {
+                adminModal.classList.remove('active');
+            }
+        });
         
         // Art Upload
         artInput.addEventListener('change', (e) => {
@@ -758,6 +1156,18 @@
             });
             updateArtDisplay();
             updateArtList();
+            updateArtworkGallery();
+        });
+        
+        // Audio Upload
+        audioInput.addEventListener('change', (e) => {
+            const files = Array.from(e.target.files);
+            files.forEach(file => {
+                const url = URL.createObjectURL(file);
+                audioTracks.push({ url, name: file.name });
+            });
+            updateAudioList();
+            updateAudioLibrary();
         });
         
         function updateArtDisplay() {
@@ -802,7 +1212,106 @@
             artCounter.textContent = `${currentArtIndex + 1} / ${artworks.length}`;
             prevBtn.disabled = artworks.length <= 1;
             nextBtn.disabled = artworks.length <= 1;
+            
+            // Auto-play linked track if exists
+            if (trackLinks[currentArtIndex] !== undefined) {
+                loadTrack(trackLinks[currentArtIndex]);
+                audioPlayer.play();
+                playBtn.textContent = '⏸';
+                isPlaying = true;
+            }
         }
+        
+        function updateArtworkGallery() {
+            if (artworks.length === 0) {
+                artworkGallery.innerHTML = `
+                    <div class="empty-state">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <rect x="3" y="3" width="18" height="18" rx="2" ry="2"/>
+                            <circle cx="8.5" cy="8.5" r="1.5"/>
+                            <polyline points="21 15 16 10 5 21"/>
+                        </svg>
+                        <p>No artwork uploaded yet</p>
+                    </div>
+                `;
+                return;
+            }
+            
+            artworkGallery.innerHTML = artworks.map((art, index) => {
+                const hasLink = trackLinks[index] !== undefined;
+                const isActive = index === currentArtIndex;
+                return `
+                    <div class="gallery-item ${isActive ? 'active' : ''}" onclick="selectArtwork(${index})">
+                        ${art.type === 'video' 
+                            ? `<video src="${art.url}" muted loop autoplay></video>`
+                            : `<img src="${art.url}" alt="${art.name}">`
+                        }
+                        <div class="gallery-item-overlay">
+                            ${hasLink ? '🔗 ' : ''}${art.name.slice(0, 15)}
+                        </div>
+                    </div>
+                `;
+            }).join('');
+        }
+        
+        function updateAudioLibrary() {
+            if (audioTracks.length === 0) {
+                audioLibrary.innerHTML = `
+                    <div class="empty-state">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <circle cx="12" cy="12" r="10"/>
+                            <polygon points="10 8 16 12 10 16 10 8"/>
+                        </svg>
+                        <p>No audio tracks uploaded yet</p>
+                    </div>
+                `;
+                return;
+            }
+            
+            audioLibrary.innerHTML = audioTracks.map((track, index) => {
+                const linkedTo = Object.entries(trackLinks).find(([_, trackIdx]) => trackIdx === index);
+                const isLinked = linkedTo !== undefined;
+                const isActive = index === currentTrackIndex;
+                return `
+                    <div class="track-item ${isActive ? 'active' : ''} ${isLinked ? 'linked' : ''}" onclick="selectTrack(${index})">
+                        <div class="track-info-item">
+                            <div class="track-title">${track.name}</div>
+                            <div class="track-meta">
+                                ${isLinked ? `<span class="link-indicator">Linked to #${parseInt(linkedTo[0]) + 1}</span>` : 'Generic'}
+                            </div>
+                        </div>
+                    </div>
+                `;
+            }).join('');
+        }
+        
+        window.selectArtwork = function(index) {
+            currentArtIndex = index;
+            updateArtDisplay();
+            updateArtworkGallery();
+            
+            // For linking mode
+            selectedArtworkForLinking = index;
+            linkingStatus.textContent = `Selected artwork #${index + 1} for linking. Click an audio track to link.`;
+        };
+        
+        window.selectTrack = function(index) {
+            // If in linking mode and artwork is selected
+            if (selectedArtworkForLinking !== null) {
+                trackLinks[selectedArtworkForLinking] = index;
+                linkingStatus.textContent = `✓ Linked artwork #${selectedArtworkForLinking + 1} to track "${audioTracks[index].name}"`;
+                selectedArtworkForLinking = null;
+                updateArtworkGallery();
+                updateAudioLibrary();
+                return;
+            }
+            
+            // Otherwise just play the track
+            loadTrack(index);
+            audioPlayer.play();
+            playBtn.textContent = '⏸';
+            isPlaying = true;
+        };
         
         function updateArtList() {
             artList.innerHTML = artworks.map((art, index) => `
@@ -813,82 +1322,53 @@
             `).join('');
         }
         
-        function removeArt(index) {
-            URL.revokeObjectURL(artworks[index].url);
-            artworks.splice(index, 1);
-            if (currentArtIndex >= artworks.length) {
-                currentArtIndex = Math.max(0, artworks.length - 1);
-            }
-            updateArtDisplay();
-            updateArtList();
-        }
-        
-        // Navigation
-        prevBtn.addEventListener('click', () => {
-            if (artworks.length === 0) return;
-            currentArtIndex = (currentArtIndex - 1 + artworks.length) % artworks.length;
-            updateArtDisplay();
-        });
-        
-        nextBtn.addEventListener('click', () => {
-            if (artworks.length === 0) return;
-            currentArtIndex = (currentArtIndex + 1) % artworks.length;
-            updateArtDisplay();
-        });
-        
-        // Slideshow
-        slideshowBtn.addEventListener('click', () => {
-            if (artworks.length === 0) return;
-            
-            isSlideshowActive = !isSlideshowActive;
-            
-            if (isSlideshowActive) {
-                slideshowBtn.textContent = 'Stop Slideshow';
-                slideshowInterval = setInterval(() => {
-                    currentArtIndex = (currentArtIndex + 1) % artworks.length;
-                    updateArtDisplay();
-                }, 5000);
-            } else {
-                slideshowBtn.textContent = 'Start Slideshow';
-                clearInterval(slideshowInterval);
-            }
-        });
-        
-        // Audio Upload
-        audioInput.addEventListener('change', (e) => {
-            const files = Array.from(e.target.files);
-            files.forEach(file => {
-                const url = URL.createObjectURL(file);
-                audioTracks.push({ url, name: file.name });
-            });
-            updatePlaylist();
-            if (audioTracks.length === 1) {
-                loadTrack(0);
-            }
-        });
-        
-        function updatePlaylist() {
-            playlist.innerHTML = audioTracks.map((track, index) => `
-                <div class="playlist-item ${index === currentTrackIndex ? 'active' : ''}" onclick="loadTrack(${index})">
+        function updateAudioList() {
+            audioList.innerHTML = audioTracks.map((track, index) => `
+                <div class="file-item">
                     <span class="file-name">${track.name}</span>
                     <button class="remove-btn" onclick="removeTrack(event, ${index})">×</button>
                 </div>
             `).join('');
         }
         
-        function loadTrack(index) {
-            currentTrackIndex = index;
-            const track = audioTracks[index];
-            audioPlayer.src = track.url;
-            trackName.textContent = track.name;
-            trackArtist.textContent = 'Vaporwave Archive';
-            playBtn.disabled = false;
-            updatePlaylist();
-        }
+        window.removeArt = function(index) {
+            URL.revokeObjectURL(artworks[index].url);
+            
+            // Remove any track links
+            if (trackLinks[index] !== undefined) {
+                delete trackLinks[index];
+            }
+            
+            // Adjust track links for indices after removed item
+            const newLinks = {};
+            Object.entries(trackLinks).forEach(([artIdx, trackIdx]) => {
+                const newArtIdx = parseInt(artIdx) > index ? parseInt(artIdx) - 1 : parseInt(artIdx);
+                newLinks[newArtIdx] = trackIdx;
+            });
+            trackLinks = newLinks;
+            
+            artworks.splice(index, 1);
+            if (currentArtIndex >= artworks.length) {
+                currentArtIndex = Math.max(0, artworks.length - 1);
+            }
+            updateArtDisplay();
+            updateArtList();
+            updateArtworkGallery();
+        };
         
-        function removeTrack(event, index) {
+        window.removeTrack = function(event, index) {
             event.stopPropagation();
             URL.revokeObjectURL(audioTracks[index].url);
+            
+            // Remove any links to this track
+            Object.keys(trackLinks).forEach(artIdx => {
+                if (trackLinks[artIdx] === index) {
+                    delete trackLinks[artIdx];
+                } else if (trackLinks[artIdx] > index) {
+                    trackLinks[artIdx]--;
+                }
+            });
+            
             audioTracks.splice(index, 1);
             
             if (index === currentTrackIndex && audioTracks.length > 0) {
@@ -902,10 +1382,52 @@
                 playBtn.textContent = '▶';
             }
             
-            updatePlaylist();
+            updateAudioList();
+            updateAudioLibrary();
+        };
+        
+        prevBtn.addEventListener('click', () => {
+            if (artworks.length === 0) return;
+            currentArtIndex = (currentArtIndex - 1 + artworks.length) % artworks.length;
+            updateArtDisplay();
+            updateArtworkGallery();
+        });
+        
+        nextBtn.addEventListener('click', () => {
+            if (artworks.length === 0) return;
+            currentArtIndex = (currentArtIndex + 1) % artworks.length;
+            updateArtDisplay();
+            updateArtworkGallery();
+        });
+        
+        slideshowBtn.addEventListener('click', () => {
+            if (artworks.length === 0) return;
+            
+            isSlideshowActive = !isSlideshowActive;
+            
+            if (isSlideshowActive) {
+                slideshowBtn.textContent = 'Stop Slideshow';
+                slideshowInterval = setInterval(() => {
+                    currentArtIndex = (currentArtIndex + 1) % artworks.length;
+                    updateArtDisplay();
+                    updateArtworkGallery();
+                }, 5000);
+            } else {
+                slideshowBtn.textContent = 'Start Slideshow';
+                clearInterval(slideshowInterval);
+            }
+        });
+        
+        function loadTrack(index) {
+            currentTrackIndex = index;
+            const track = audioTracks[index];
+            audioPlayer.src = track.url;
+            trackName.textContent = track.name;
+            trackArtist.textContent = 'Vaporwave Archive';
+            playBtn.disabled = false;
+            updateAudioLibrary();
         }
         
-        // Audio Controls
         playBtn.addEventListener('click', () => {
             if (isPlaying) {
                 audioPlayer.pause();
