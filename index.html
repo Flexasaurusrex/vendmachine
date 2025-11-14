@@ -1,0 +1,1114 @@
+New chat
+I want to create a way back machine for my project the Tezos Art Vending Machine with a streaming vaporwave style audio player and site styling with retro vibes to showcase the artwork (gifs and mp4s) and minimalistic energy and professional level design layout and fonts like you are a senior level design specialist at the worlds top firm. I want to be able to upload audio files that can be played from the audio player and art that will showcase above that for the designs users can either slideshow to let play continuously or click through with arrows.
+
+
+Architected vaporwave aesthetic interface merging retro design with professional functionality.
+10s
+
+
+
+
+
+
+
+
+I'll create a professional-grade vaporwave-styled Way Back Machine for your Tezos Art Vending Machine project. This will have that retro aesthetic with modern, polished execution.
+
+
+Creating a professional vaporwave-styled Way Back Machine website for the Tezos Art Vending Machine with audio player, artwork showcase, and upload functionality
+tezos-vending-wayback.html
+
+Synthesizing vaporwave aesthetics with minimalist professional design.
+
+
+
+
+View your Tezos Art Vending Machine Way Back Machine
+
+I've created a professional-grade vaporwave archive for your Tezos Art Vending Machine with:
+
+Design Highlights:
+
+Authentic vaporwave aesthetic with purple/cyan gradients, neon accents, and retro grid overlay
+Professional typography using Space Grotesk and Share Tech Mono
+Glass-morphism effects with backdrop blur
+Smooth animations and glowing hover states
+Features:
+
+Artwork Showcase: Upload multiple GIFs/MP4s with fade-in transitions and video autoplay
+Navigation: Manual arrows or auto-slideshow (5-second intervals)
+Audio Player: Full streaming player with progress bar, volume control, seek functionality, and auto-advance playlist
+File Management: Remove individual items from both artwork and audio collections
+Responsive: Works beautifully on mobile and desktop
+The design is minimalistic yet sophisticated - exactly what you'd expect from a senior designer at a top firm, with that perfect balance of retro vaporwave vibes and professional polish.
+
+Tezos vending wayback
+Code · HTML 
+cool but the vending machines orientation is portrait not landscape
+
+
+19 steps
+
+Adjusting footer padding for portrait layout
++9
+-9
+tezos-vending-wayback.html
+
+Restructured layout to accommodate portrait orientation authentically.
+
+Perfect! I've redesigned it for portrait orientation like an actual vending machine:
+
+View your portrait-optimized Tezos Art Vending Machine
+
+Key changes:
+
+Narrower layout: Max-width of 600px for that tall vending machine feel
+Portrait art display: 700px height optimized for vertical artwork
+Vertical stacking: All sections flow top-to-bottom naturally
+Tighter spacing: More compact design fits the vertical format
+Better mobile optimization: Additional breakpoints for smaller screens
+The design now has that authentic vending machine aesthetic with the tall, narrow portrait orientation while keeping all the vaporwave styling and functionality intact.
+
+Tezos vending wayback
+Code · HTML 
+do I just need the one html file to push to put this live on vercel?
+
+
+Validated single-file deployment feasibility and considered best practices.
+1m, 2s
+
+
+
+
+Yes! That's all you need - just the single HTML file.
+
+To deploy to Vercel:
+
+Rename it to index.html (so it serves at the root)
+Push to GitHub or any git repo
+Connect to Vercel and deploy
+Or use the Vercel CLI:
+
+bash
+vercel --prod
+The file is completely self-contained - all the styling and JavaScript are embedded, and the only external dependencies are:
+
+Google Fonts (Space Grotesk & Share Tech Mono)
+Those load from CDN automatically
+No build process, no dependencies, no package.json needed. Just pure HTML/CSS/JS that works anywhere.
+
+Optional but recommended: You could add a vercel.json in the same directory if you want custom configuration:
+
+json
+{
+  "cleanUrls": true
+}
+But that's totally optional. The single HTML file will work perfectly as-is on Vercel.
+
+Screenshot 2025-11-13 at 4.30.10 PM.png
+this layout is aweful though, I have to have it at 33% to see all the modals, I think it should be ART LEFT SIDE ALL OTHER CONTROLS (MUSIC, UPLOADS, ETC) on the left of that.
+
+
+19 steps
+
+Optimizing art container height calculation for new compact spacing
++12
+-12
+tezos-vending-wayback.html
+
+Reconsidered layout architecture to accommodate user's spatial constraints.
+
+Perfect! I've completely restructured the layout:
+
+View your new two-column layout
+
+New Layout:
+
+LEFT SIDE: Massive art display that fills the entire left column and most of the screen height
+RIGHT SIDE: All controls stacked vertically (audio player, artwork upload, audio upload)
+The right column is sticky and scrollable if needed
+Art display dynamically adjusts to viewport height (calc(100vh - 200px))
+Responsive:
+
+On screens under 968px, it switches back to stacked vertical layout
+The controls get narrower on smaller screens (400px at 1200px breakpoint)
+Everything is now visible at 100% zoom on a standard desktop screen
+Much cleaner vending machine aesthetic with the art front and center!
+
+Tezos vending wayback
+Code · HTML 
+
+
+How can I help you today?
+
+
+
+
+
+
+
+
+Tezos vending wayback · HTML
+Copy
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tezos Art Vending Machine · Archive</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Share+Tech+Mono&display=swap');
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        :root {
+            --primary-gradient: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            --secondary-gradient: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+            --accent-cyan: #00f0ff;
+            --accent-pink: #ff006e;
+            --accent-purple: #8338ec;
+            --bg-dark: #0a0a0f;
+            --bg-card: rgba(15, 15, 25, 0.85);
+            --text-primary: #ffffff;
+            --text-secondary: #a0a0b0;
+            --border-glow: rgba(0, 240, 255, 0.3);
+        }
+        
+        body {
+            font-family: 'Space Grotesk', -apple-system, BlinkMacSystemFont, sans-serif;
+            background: var(--bg-dark);
+            color: var(--text-primary);
+            line-height: 1.6;
+            overflow-x: hidden;
+            position: relative;
+        }
+        
+        body::before {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: 
+                repeating-linear-gradient(
+                    0deg,
+                    transparent,
+                    transparent 2px,
+                    rgba(0, 240, 255, 0.03) 2px,
+                    rgba(0, 240, 255, 0.03) 4px
+                ),
+                radial-gradient(circle at 20% 50%, rgba(102, 126, 234, 0.1) 0%, transparent 50%),
+                radial-gradient(circle at 80% 80%, rgba(255, 0, 110, 0.1) 0%, transparent 50%);
+            pointer-events: none;
+            z-index: 0;
+        }
+        
+        .container {
+            max-width: 1600px;
+            margin: 0 auto;
+            padding: 0 2rem;
+            position: relative;
+            z-index: 1;
+        }
+        
+        .main-layout {
+            display: grid;
+            grid-template-columns: 1fr 500px;
+            gap: 2rem;
+            align-items: start;
+        }
+        
+        /* Header */
+        header {
+            padding: 1.5rem 0 1rem;
+            text-align: center;
+            position: relative;
+        }
+        
+        .logo {
+            font-size: 2rem;
+            font-weight: 700;
+            background: var(--primary-gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            letter-spacing: -0.02em;
+            margin-bottom: 0.5rem;
+            text-transform: uppercase;
+            line-height: 1.2;
+        }
+        
+        .tagline {
+            font-family: 'Share Tech Mono', monospace;
+            font-size: 0.875rem;
+            color: var(--accent-cyan);
+            letter-spacing: 0.15em;
+            text-transform: uppercase;
+        }
+        
+        /* Main Viewer */
+        .viewer-section {
+            margin: 1.5rem 0;
+        }
+        
+        .controls-column {
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+            position: sticky;
+            top: 2rem;
+            max-height: calc(100vh - 4rem);
+            overflow-y: auto;
+            padding-right: 0.5rem;
+        }
+        
+        .controls-column::-webkit-scrollbar {
+            width: 6px;
+        }
+        
+        .controls-column::-webkit-scrollbar-track {
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 3px;
+        }
+        
+        .controls-column::-webkit-scrollbar-thumb {
+            background: var(--accent-cyan);
+            border-radius: 3px;
+        }
+        
+        .art-display {
+            background: var(--bg-card);
+            border: 1px solid var(--border-glow);
+            border-radius: 8px;
+            padding: 1.5rem;
+            backdrop-filter: blur(10px);
+            box-shadow: 0 8px 32px rgba(0, 240, 255, 0.1);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .art-display::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 1px;
+            background: linear-gradient(90deg, transparent, var(--accent-cyan), transparent);
+        }
+        
+        .art-container {
+            position: relative;
+            width: 100%;
+            height: calc(100vh - 200px);
+            min-height: 800px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: rgba(0, 0, 0, 0.3);
+            border-radius: 4px;
+            overflow: hidden;
+        }
+        
+        .art-item {
+            display: none;
+            max-width: 100%;
+            max-height: 100%;
+            width: auto;
+            height: auto;
+            object-fit: contain;
+        }
+        
+        .art-item.active {
+            display: block;
+            animation: fadeIn 0.5s ease-in-out;
+        }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; transform: scale(0.95); }
+            to { opacity: 1; transform: scale(1); }
+        }
+        
+        .art-placeholder {
+            text-align: center;
+            color: var(--text-secondary);
+            padding: 4rem 2rem;
+        }
+        
+        .art-placeholder svg {
+            width: 80px;
+            height: 80px;
+            margin-bottom: 1rem;
+            opacity: 0.3;
+        }
+        
+        /* Navigation Controls */
+        .art-controls {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-top: 2rem;
+            gap: 1rem;
+            flex-wrap: wrap;
+        }
+        
+        .nav-arrows {
+            display: flex;
+            gap: 0.5rem;
+        }
+        
+        .arrow-btn {
+            background: rgba(0, 240, 255, 0.1);
+            border: 1px solid var(--accent-cyan);
+            color: var(--accent-cyan);
+            width: 48px;
+            height: 48px;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.25rem;
+        }
+        
+        .arrow-btn:hover:not(:disabled) {
+            background: rgba(0, 240, 255, 0.2);
+            box-shadow: 0 0 20px rgba(0, 240, 255, 0.3);
+            transform: translateY(-2px);
+        }
+        
+        .arrow-btn:disabled {
+            opacity: 0.3;
+            cursor: not-allowed;
+        }
+        
+        .slideshow-controls {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+        
+        .toggle-btn {
+            background: var(--primary-gradient);
+            border: none;
+            color: white;
+            padding: 0.75rem 1.5rem;
+            border-radius: 4px;
+            cursor: pointer;
+            font-weight: 500;
+            font-size: 0.875rem;
+            transition: all 0.3s ease;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+        
+        .toggle-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 20px rgba(102, 126, 234, 0.4);
+        }
+        
+        .art-info {
+            font-family: 'Share Tech Mono', monospace;
+            font-size: 0.875rem;
+            color: var(--text-secondary);
+        }
+        
+        /* Audio Player */
+        .audio-player {
+            background: var(--bg-card);
+            border: 1px solid var(--border-glow);
+            border-radius: 8px;
+            padding: 1.5rem;
+            backdrop-filter: blur(10px);
+            box-shadow: 0 8px 32px rgba(0, 240, 255, 0.1);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .audio-player::before {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            height: 1px;
+            background: linear-gradient(90deg, transparent, var(--accent-pink), transparent);
+        }
+        
+        .player-title {
+            font-size: 1.25rem;
+            font-weight: 600;
+            margin-bottom: 1.5rem;
+            background: var(--secondary-gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        
+        .track-info {
+            margin-bottom: 1.5rem;
+        }
+        
+        .track-name {
+            font-size: 1rem;
+            font-weight: 500;
+            color: var(--text-primary);
+            margin-bottom: 0.25rem;
+        }
+        
+        .track-artist {
+            font-family: 'Share Tech Mono', monospace;
+            font-size: 0.875rem;
+            color: var(--text-secondary);
+        }
+        
+        .progress-container {
+            margin-bottom: 1.5rem;
+        }
+        
+        .progress-bar {
+            width: 100%;
+            height: 6px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 3px;
+            cursor: pointer;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .progress-bar::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            height: 100%;
+            width: 0%;
+            background: var(--secondary-gradient);
+            border-radius: 3px;
+            transition: width 0.1s linear;
+        }
+        
+        .progress-bar.playing::before {
+            width: var(--progress, 0%);
+        }
+        
+        .time-display {
+            display: flex;
+            justify-content: space-between;
+            font-family: 'Share Tech Mono', monospace;
+            font-size: 0.75rem;
+            color: var(--text-secondary);
+            margin-top: 0.5rem;
+        }
+        
+        .player-controls {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            margin-bottom: 1.5rem;
+        }
+        
+        .play-btn {
+            background: var(--secondary-gradient);
+            border: none;
+            color: white;
+            width: 56px;
+            height: 56px;
+            border-radius: 50%;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            transition: all 0.3s ease;
+        }
+        
+        .play-btn:hover {
+            transform: scale(1.05);
+            box-shadow: 0 8px 20px rgba(255, 0, 110, 0.4);
+        }
+        
+        .volume-control {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            flex: 1;
+        }
+        
+        .volume-slider {
+            flex: 1;
+            max-width: 150px;
+            height: 4px;
+            -webkit-appearance: none;
+            appearance: none;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 2px;
+            outline: none;
+        }
+        
+        .volume-slider::-webkit-slider-thumb {
+            -webkit-appearance: none;
+            appearance: none;
+            width: 14px;
+            height: 14px;
+            background: var(--accent-cyan);
+            border-radius: 50%;
+            cursor: pointer;
+        }
+        
+        .volume-slider::-moz-range-thumb {
+            width: 14px;
+            height: 14px;
+            background: var(--accent-cyan);
+            border-radius: 50%;
+            cursor: pointer;
+            border: none;
+        }
+        
+        .upload-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border-glow);
+            border-radius: 8px;
+            padding: 1.5rem;
+            backdrop-filter: blur(10px);
+            box-shadow: 0 8px 32px rgba(0, 240, 255, 0.1);
+        }
+        
+        .upload-card h3 {
+            font-size: 0.95rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
+            color: var(--accent-cyan);
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+        
+        .file-input-wrapper {
+            position: relative;
+            margin-bottom: 1rem;
+        }
+        
+        .file-input {
+            display: none;
+        }
+        
+        .file-label {
+            display: block;
+            padding: 1rem;
+            background: rgba(0, 240, 255, 0.05);
+            border: 2px dashed var(--accent-cyan);
+            border-radius: 4px;
+            text-align: center;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            color: var(--text-secondary);
+            font-size: 0.875rem;
+        }
+        
+        .file-label:hover {
+            background: rgba(0, 240, 255, 0.1);
+            border-color: var(--accent-pink);
+        }
+        
+        .file-list {
+            margin-top: 1rem;
+        }
+        
+        .file-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0.75rem;
+            background: rgba(0, 0, 0, 0.3);
+            border-radius: 4px;
+            margin-bottom: 0.5rem;
+            font-size: 0.875rem;
+        }
+        
+        .file-name {
+            color: var(--text-primary);
+            overflow: hidden;
+            text-overflow: ellipsis;
+            white-space: nowrap;
+            flex: 1;
+        }
+        
+        .remove-btn {
+            background: none;
+            border: none;
+            color: var(--accent-pink);
+            cursor: pointer;
+            padding: 0.25rem 0.5rem;
+            font-size: 1.25rem;
+            line-height: 1;
+            transition: all 0.2s ease;
+        }
+        
+        .remove-btn:hover {
+            color: #ff3380;
+        }
+        
+        .playlist-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0.75rem;
+            background: rgba(0, 0, 0, 0.3);
+            border-radius: 4px;
+            margin-bottom: 0.5rem;
+            font-size: 0.875rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        
+        .playlist-item:hover {
+            background: rgba(0, 240, 255, 0.1);
+        }
+        
+        .playlist-item.active {
+            background: rgba(0, 240, 255, 0.2);
+            border-left: 3px solid var(--accent-cyan);
+        }
+        
+        /* Footer */
+        footer {
+            text-align: center;
+            padding: 1.5rem 0;
+            font-family: 'Share Tech Mono', monospace;
+            font-size: 0.75rem;
+            color: var(--text-secondary);
+            letter-spacing: 0.1em;
+        }
+        
+        /* Responsive */
+        @media (max-width: 1200px) {
+            .main-layout {
+                grid-template-columns: 1fr 400px;
+            }
+        }
+        
+        @media (max-width: 968px) {
+            .main-layout {
+                grid-template-columns: 1fr;
+            }
+            
+            .controls-column {
+                position: relative;
+                top: 0;
+                max-height: none;
+                overflow-y: visible;
+            }
+            
+            .art-container {
+                height: 600px;
+                min-height: 500px;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .container {
+                padding: 0 1rem;
+            }
+            
+            .logo {
+                font-size: 1.75rem;
+            }
+            
+            .tagline {
+                font-size: 0.75rem;
+            }
+            
+            .art-container {
+                height: 500px;
+                min-height: 400px;
+            }
+            
+            .art-controls {
+                flex-direction: column;
+                gap: 1rem;
+            }
+            
+            .nav-arrows {
+                width: 100%;
+                justify-content: center;
+            }
+            
+            .slideshow-controls {
+                width: 100%;
+                justify-content: center;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .art-container {
+                height: 400px;
+                min-height: 300px;
+            }
+            
+            .art-display {
+                padding: 1rem;
+            }
+            
+            .audio-player {
+                padding: 1.5rem;
+            }
+            
+            .upload-card {
+                padding: 1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <div class="logo">Tezos Art Vending Machine</div>
+            <div class="tagline">Archive · Way Back Machine</div>
+        </header>
+        
+        <main>
+            <div class="main-layout">
+                <!-- Left Column: Art Display -->
+                <section class="viewer-section">
+                    <div class="art-display">
+                        <div class="art-container" id="artContainer">
+                            <div class="art-placeholder">
+                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <rect x="3" y="3" width="18" height="18" rx="2" ry="2"/>
+                                    <circle cx="8.5" cy="8.5" r="1.5"/>
+                                    <polyline points="21 15 16 10 5 21"/>
+                                </svg>
+                                <p>Upload artwork to begin</p>
+                            </div>
+                        </div>
+                        
+                        <div class="art-controls">
+                            <div class="nav-arrows">
+                                <button class="arrow-btn" id="prevBtn" disabled>←</button>
+                                <button class="arrow-btn" id="nextBtn" disabled>→</button>
+                            </div>
+                            
+                            <div class="art-info">
+                                <span id="artCounter">0 / 0</span>
+                            </div>
+                            
+                            <div class="slideshow-controls">
+                                <button class="toggle-btn" id="slideshowBtn">Start Slideshow</button>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+                
+                <!-- Right Column: Controls -->
+                <div class="controls-column">
+                    <div class="audio-player">
+                        <div class="player-title">🌴 Vaporwave Player</div>
+                        
+                        <div class="track-info">
+                            <div class="track-name" id="trackName">No track loaded</div>
+                            <div class="track-artist" id="trackArtist">Upload audio to begin</div>
+                        </div>
+                        
+                        <div class="progress-container">
+                            <div class="progress-bar" id="progressBar"></div>
+                            <div class="time-display">
+                                <span id="currentTime">0:00</span>
+                                <span id="duration">0:00</span>
+                            </div>
+                        </div>
+                        
+                        <div class="player-controls">
+                            <button class="play-btn" id="playBtn" disabled>▶</button>
+                            
+                            <div class="volume-control">
+                                <span>🔊</span>
+                                <input type="range" class="volume-slider" id="volumeSlider" min="0" max="100" value="70">
+                            </div>
+                        </div>
+                        
+                        <div class="file-list" id="playlist"></div>
+                    </div>
+                    
+                    <div class="upload-card">
+                        <h3>📁 Upload Artwork</h3>
+                        <div class="file-input-wrapper">
+                            <input type="file" id="artInput" class="file-input" accept="image/gif,video/mp4" multiple>
+                            <label for="artInput" class="file-label">
+                                Click to upload GIFs or MP4s<br>
+                                <small>Supports multiple files</small>
+                            </label>
+                        </div>
+                        <div class="file-list" id="artList"></div>
+                    </div>
+                    
+                    <div class="upload-card">
+                        <h3>🎵 Upload Audio</h3>
+                        <div class="file-input-wrapper">
+                            <input type="file" id="audioInput" class="file-input" accept="audio/*" multiple>
+                            <label for="audioInput" class="file-label">
+                                Click to upload audio files<br>
+                                <small>MP3, WAV, OGG, etc.</small>
+                            </label>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+        
+        <footer>
+            © 2025 Tezos Art Vending Machine · Vaporwave Archive
+        </footer>
+    </div>
+    
+    <audio id="audioPlayer"></audio>
+    
+    <script>
+        // State
+        let artworks = [];
+        let currentArtIndex = 0;
+        let audioTracks = [];
+        let currentTrackIndex = 0;
+        let isPlaying = false;
+        let isSlideshowActive = false;
+        let slideshowInterval = null;
+        
+        // Elements
+        const artContainer = document.getElementById('artContainer');
+        const artCounter = document.getElementById('artCounter');
+        const prevBtn = document.getElementById('prevBtn');
+        const nextBtn = document.getElementById('nextBtn');
+        const slideshowBtn = document.getElementById('slideshowBtn');
+        const artInput = document.getElementById('artInput');
+        const artList = document.getElementById('artList');
+        const audioInput = document.getElementById('audioInput');
+        const audioPlayer = document.getElementById('audioPlayer');
+        const playBtn = document.getElementById('playBtn');
+        const progressBar = document.getElementById('progressBar');
+        const currentTimeEl = document.getElementById('currentTime');
+        const durationEl = document.getElementById('duration');
+        const volumeSlider = document.getElementById('volumeSlider');
+        const trackName = document.getElementById('trackName');
+        const trackArtist = document.getElementById('trackArtist');
+        const playlist = document.getElementById('playlist');
+        
+        // Initialize volume
+        audioPlayer.volume = volumeSlider.value / 100;
+        
+        // Art Upload
+        artInput.addEventListener('change', (e) => {
+            const files = Array.from(e.target.files);
+            files.forEach(file => {
+                const url = URL.createObjectURL(file);
+                const type = file.type.startsWith('video') ? 'video' : 'image';
+                artworks.push({ url, name: file.name, type });
+            });
+            updateArtDisplay();
+            updateArtList();
+        });
+        
+        function updateArtDisplay() {
+            artContainer.innerHTML = '';
+            
+            if (artworks.length === 0) {
+                artContainer.innerHTML = `
+                    <div class="art-placeholder">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <rect x="3" y="3" width="18" height="18" rx="2" ry="2"/>
+                            <circle cx="8.5" cy="8.5" r="1.5"/>
+                            <polyline points="21 15 16 10 5 21"/>
+                        </svg>
+                        <p>Upload artwork to begin</p>
+                    </div>
+                `;
+                artCounter.textContent = '0 / 0';
+                prevBtn.disabled = true;
+                nextBtn.disabled = true;
+                return;
+            }
+            
+            artworks.forEach((art, index) => {
+                if (art.type === 'video') {
+                    const video = document.createElement('video');
+                    video.src = art.url;
+                    video.className = 'art-item';
+                    video.loop = true;
+                    video.muted = true;
+                    video.autoplay = index === currentArtIndex;
+                    if (index === currentArtIndex) video.classList.add('active');
+                    artContainer.appendChild(video);
+                } else {
+                    const img = document.createElement('img');
+                    img.src = art.url;
+                    img.className = 'art-item';
+                    if (index === currentArtIndex) img.classList.add('active');
+                    artContainer.appendChild(img);
+                }
+            });
+            
+            artCounter.textContent = `${currentArtIndex + 1} / ${artworks.length}`;
+            prevBtn.disabled = artworks.length <= 1;
+            nextBtn.disabled = artworks.length <= 1;
+        }
+        
+        function updateArtList() {
+            artList.innerHTML = artworks.map((art, index) => `
+                <div class="file-item">
+                    <span class="file-name">${art.name}</span>
+                    <button class="remove-btn" onclick="removeArt(${index})">×</button>
+                </div>
+            `).join('');
+        }
+        
+        function removeArt(index) {
+            URL.revokeObjectURL(artworks[index].url);
+            artworks.splice(index, 1);
+            if (currentArtIndex >= artworks.length) {
+                currentArtIndex = Math.max(0, artworks.length - 1);
+            }
+            updateArtDisplay();
+            updateArtList();
+        }
+        
+        // Navigation
+        prevBtn.addEventListener('click', () => {
+            if (artworks.length === 0) return;
+            currentArtIndex = (currentArtIndex - 1 + artworks.length) % artworks.length;
+            updateArtDisplay();
+        });
+        
+        nextBtn.addEventListener('click', () => {
+            if (artworks.length === 0) return;
+            currentArtIndex = (currentArtIndex + 1) % artworks.length;
+            updateArtDisplay();
+        });
+        
+        // Slideshow
+        slideshowBtn.addEventListener('click', () => {
+            if (artworks.length === 0) return;
+            
+            isSlideshowActive = !isSlideshowActive;
+            
+            if (isSlideshowActive) {
+                slideshowBtn.textContent = 'Stop Slideshow';
+                slideshowInterval = setInterval(() => {
+                    currentArtIndex = (currentArtIndex + 1) % artworks.length;
+                    updateArtDisplay();
+                }, 5000);
+            } else {
+                slideshowBtn.textContent = 'Start Slideshow';
+                clearInterval(slideshowInterval);
+            }
+        });
+        
+        // Audio Upload
+        audioInput.addEventListener('change', (e) => {
+            const files = Array.from(e.target.files);
+            files.forEach(file => {
+                const url = URL.createObjectURL(file);
+                audioTracks.push({ url, name: file.name });
+            });
+            updatePlaylist();
+            if (audioTracks.length === 1) {
+                loadTrack(0);
+            }
+        });
+        
+        function updatePlaylist() {
+            playlist.innerHTML = audioTracks.map((track, index) => `
+                <div class="playlist-item ${index === currentTrackIndex ? 'active' : ''}" onclick="loadTrack(${index})">
+                    <span class="file-name">${track.name}</span>
+                    <button class="remove-btn" onclick="removeTrack(event, ${index})">×</button>
+                </div>
+            `).join('');
+        }
+        
+        function loadTrack(index) {
+            currentTrackIndex = index;
+            const track = audioTracks[index];
+            audioPlayer.src = track.url;
+            trackName.textContent = track.name;
+            trackArtist.textContent = 'Vaporwave Archive';
+            playBtn.disabled = false;
+            updatePlaylist();
+        }
+        
+        function removeTrack(event, index) {
+            event.stopPropagation();
+            URL.revokeObjectURL(audioTracks[index].url);
+            audioTracks.splice(index, 1);
+            
+            if (index === currentTrackIndex && audioTracks.length > 0) {
+                loadTrack(Math.min(index, audioTracks.length - 1));
+            } else if (audioTracks.length === 0) {
+                audioPlayer.src = '';
+                trackName.textContent = 'No track loaded';
+                trackArtist.textContent = 'Upload audio to begin';
+                playBtn.disabled = true;
+                isPlaying = false;
+                playBtn.textContent = '▶';
+            }
+            
+            updatePlaylist();
+        }
+        
+        // Audio Controls
+        playBtn.addEventListener('click', () => {
+            if (isPlaying) {
+                audioPlayer.pause();
+                playBtn.textContent = '▶';
+            } else {
+                audioPlayer.play();
+                playBtn.textContent = '⏸';
+            }
+            isPlaying = !isPlaying;
+        });
+        
+        audioPlayer.addEventListener('timeupdate', () => {
+            const progress = (audioPlayer.currentTime / audioPlayer.duration) * 100;
+            progressBar.style.setProperty('--progress', `${progress}%`);
+            progressBar.classList.add('playing');
+            currentTimeEl.textContent = formatTime(audioPlayer.currentTime);
+        });
+        
+        audioPlayer.addEventListener('loadedmetadata', () => {
+            durationEl.textContent = formatTime(audioPlayer.duration);
+        });
+        
+        audioPlayer.addEventListener('ended', () => {
+            if (currentTrackIndex < audioTracks.length - 1) {
+                loadTrack(currentTrackIndex + 1);
+                audioPlayer.play();
+            } else {
+                isPlaying = false;
+                playBtn.textContent = '▶';
+            }
+        });
+        
+        progressBar.addEventListener('click', (e) => {
+            if (audioPlayer.src) {
+                const rect = progressBar.getBoundingClientRect();
+                const percent = (e.clientX - rect.left) / rect.width;
+                audioPlayer.currentTime = percent * audioPlayer.duration;
+            }
+        });
+        
+        volumeSlider.addEventListener('input', (e) => {
+            audioPlayer.volume = e.target.value / 100;
+        });
+        
+        function formatTime(seconds) {
+            if (isNaN(seconds)) return '0:00';
+            const mins = Math.floor(seconds / 60);
+            const secs = Math.floor(seconds % 60);
+            return `${mins}:${secs.toString().padStart(2, '0')}`;
+        }
+    </script>
+</body>
+</html>
